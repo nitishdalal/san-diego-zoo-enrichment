@@ -1,0 +1,47 @@
+Deleting a zookeeper
+
+Update zookeeper_name set deleted=1 where id='$zookeeper_id'; //updating the deleted field in zookeeper_name table to 1 ; $zookeeper_id being the php variable in which the id of the zookeeper to be deleted is stored.
+Delete from zookeeper_animal where zookeeper_id='$zookeeper_id'; //as the zookeeper is marked as deleted, we delete all zookeeper_animal relations for that id
+
+
+Adding a zookeeper
+
+Insert into zookeeper_name values($id, $name,0); //inserting new id and name into zookeeper_name table
+
+
+Deleting an animal
+
+Update animal set deleted=1 where animal_id='$animal_id' //$animal_id here being the php variable in which we take animal's id from the user
+Delete from zookeeper_animal where animal_id='$animal_id' //deleting all entries for that animal from the zookeeper_animal relation
+
+
+Adding an animal
+
+Insert into animal values($animal_id,$animal_name,$animal_species,0);
+
+
+Adding an enrichment
+
+Insert into enrichment values($enrichment_id, $enrichment_name, $enrichment_category, $enrichment_subcategory,0);
+
+
+Deleting an enrichment
+
+Updaete enrichment set deleted=1 where enrichment_id=$enrichment_id // $enrichment_id is the php field that specifies which enrichment to be deleted
+
+
+Adding a zookeeper-animal relation
+
+Insert into zookeeper_animal values($zookeeper_id, $animal_id); //superuser will select the names and once we extract IDs from those names, we will insert them
+
+
+
+Deleting a species
+
+Update animal_species set deleted=1 where species_id=$species_id;
+Update animal set deleted=1 where animal_species =$species_id;
+
+
+Adding a species
+
+Insert into species values ($species_id, $species_name, 0);
